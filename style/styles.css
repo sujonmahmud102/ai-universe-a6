@@ -1,0 +1,39 @@
+.cardTitle {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 29px;
+    color: #111111;
+
+}
+
+.cardText {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #585858;
+
+}
+
+.aiName {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 29px;
+    color: #111111;
+
+}
+
+.aiDate {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 8px;
+    color: #585858;
+
+}
+
+.dateIcon{
+    width: 14px;
+}
