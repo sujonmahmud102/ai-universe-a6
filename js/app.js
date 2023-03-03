@@ -90,7 +90,7 @@ const singleDataDetails = id => {
 
 // modal section
 const displaySingleData = singleData => {
-  console.log(singleData.data.input_output_examples[0])
+  console.log(singleData.data.accuracy.score)
   // header part
   const toolDiscription = document.getElementById('tool-description');
   toolDiscription.innerText = singleData.data.description
@@ -134,6 +134,17 @@ const displaySingleData = singleData => {
       src="${singleData.data.image_link[0]}"
       class="img-fluid h-100 w-100 p-3 rounded-5" alt="...">
   `
+
+  // accuracy
+  const accuracyContainer = document.getElementById('accuracy-container');
+  const accuray = document.getElementById('accuracy');
+  const accurayScore = singleData.data.accuracy.score;
+  const accuracyPercentage = accurayScore * 100;
+  if (accuracyPercentage === 0) {
+    accuracyContainer.classList.add('d-none')
+  } else {
+    accuray.innerText = accuracyPercentage;
+  }
 
   // input output part
   const inputElement = document.getElementById('input-examples')

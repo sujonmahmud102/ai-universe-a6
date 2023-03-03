@@ -55,8 +55,9 @@
     border: 1px solid #EB5757;
     border-radius: 5px;
 }
-.modal-cards-body:hover{
-    background:  rgb(177, 211, 111);
+
+.modal-cards-body:hover {
+    background: rgb(177, 211, 111);
 }
 
 .modal-card1-header {
@@ -103,4 +104,24 @@
     text-align: center;
     color: #EB5757;
     padding-top: 1px;
+}
+
+/* accuracy */
+
+.tool-accuray {
+    position: absolute;
+    left: 245px;
+    top: 20px;
+    background: #EB5757;
+    border-radius: 4px;
+    height: 25px;
+}
+
+.tool-accuray-text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
 }
