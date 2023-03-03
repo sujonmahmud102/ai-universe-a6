@@ -34,6 +34,15 @@
 
 }
 
-.dateIcon{
+.dateIcon {
     width: 14px;
+}
+
+.features-list ol {
+    padding-left: 15px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #585858;
+
 }

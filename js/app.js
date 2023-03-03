@@ -16,17 +16,23 @@ const displayData = (data) => {
     data = data.slice(0, 6);
     seeMore.classList.remove("d-none")
     document.getElementById('see-more-btn').addEventListener('click', function () {
-      
+
       seeMore.classList.add("d-none")
     })
-  
+
   } else {
     seeMore.classList.add("d-none")
   }
- 
+
   // display all data
   data.forEach(singleElement => {
     featureList(singleElement.features)
+
+    let list = "<ol>";
+    for (let i = 0; i < singleElement.features.length; i++) {
+      list += "<li>" + singleElement.features[i] + "</li>";
+    }
+    list += "</ol>"
 
     const div = document.createElement('div');
     div.classList.add('col');
@@ -37,9 +43,9 @@ const displayData = (data) => {
             <div class="card-body">
               <h5 class="card-title cardTitle">Features</h5>
               <p class="card-text cardText">
-                <ol id="features-list">
-                
-                </ol>
+                <div class="features-list">
+                 ${list}
+                </div>
               </p>
               <hr>
               <div class="d-flex justify-content-between align-items-center">
@@ -78,16 +84,13 @@ const toggleSpinner = isLoading => {
 
 const featureList = (featureList) => {
 
-  // const featuresContainer = document.getElementById('test');
-  featureList.forEach(singleFeatureList => {
-    console.log(singleFeatureList)
-    const ol = document.createElement('ol')
-    ol.innerHTML = `
-      <li>${singleFeatureList}</li>
-      `
-    // document.featuresContainer.innerHTML = ol;
-    console.log(ol)
-  })
+  const featuresContainer = document.getElementById('features-list');
+
+ 
+  // console.log(list)
+  // featuresContainer.innerHTML = list;
+  // console.log(ol)
 }
+
 
 loadData()
