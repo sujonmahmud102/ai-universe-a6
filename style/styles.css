@@ -47,3 +47,60 @@
     color: #585858;
 
 }
+
+/* modal design */
+
+.modal-cards-body {
+    background: rgba(235, 87, 87, 0.05);
+    border: 1px solid #EB5757;
+    border-radius: 5px;
+}
+.modal-cards-body:hover{
+    background:  rgb(177, 211, 111);
+}
+
+.modal-card1-header {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 35px;
+    color: #111111;
+}
+
+.pricing-div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.pricing1 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    align-items: center;
+    text-align: center;
+    color: #03A30A;
+    padding-top: 10px;
+}
+
+.pricing2 {
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 19px;
+    align-items: center;
+    text-align: center;
+    color: #F28927;
+    padding-top: 10px;
+
+}
+
+.pricing3 {
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 19px;
+    align-items: center;
+    text-align: center;
+    color: #EB5757;
+    padding-top: 10px;
+}

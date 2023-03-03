@@ -77,7 +77,7 @@ const toggleSpinner = isLoading => {
 }
 
 document.getElementById('see-more-btn').addEventListener('click', function () {
-
+  toggleSpinner(true)
   loadData();
 })
 
