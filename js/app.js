@@ -1,30 +1,44 @@
 const loadData = () => {
-  spinnerSection(true)
-    const url = "https://openapi.programming-hero.com/api/ai/tools"
-    fetch(url)
-        .then(res => res.json())
-        .then(data => singleData(data.data.tools))
+  toggleSpinner(true)
+  const url = "https://openapi.programming-hero.com/api/ai/tools"
+  fetch(url)
+    .then(res => res.json())
+    .then(data => displayData(data.data.tools))
 }
 
-const singleData = (singleData) => {
-    const cardContainer = document.getElementById('card-container')
-    singleData.slice(0,6).forEach(singleElement => {
-        console.log(singleElement.features)
-        const div = document.createElement('div');
-        div.classList.add('col');
-        div.innerHTML = `
+const displayData = (data) => {
+  const cardContainer = document.getElementById('card-container')
+
+  // display 6 data
+  const seeMore = document.getElementById('see-more');
+
+  if (data.length > 6) {
+    data = data.slice(0, 6);
+    seeMore.classList.remove("d-none")
+    document.getElementById('see-more-btn').addEventListener('click', function () {
+      
+      seeMore.classList.add("d-none")
+    })
+  
+  } else {
+    seeMore.classList.add("d-none")
+  }
+ 
+  // display all data
+  data.forEach(singleElement => {
+    featureList(singleElement.features)
+
+    const div = document.createElement('div');
+    div.classList.add('col');
+    div.innerHTML = `
         <div class="card h-100">
-            <img class="img-fluid p-3 rounded-5"
-              src="${singleElement.image}" class="card-img-top"
+            <img src="${singleElement.image}" class="img-fluid h-50 p-3 rounded-5"
               alt="...">
             <div class="card-body">
               <h5 class="card-title cardTitle">Features</h5>
               <p class="card-text cardText">
                 <ol id="features-list">
-                <li>${singleElement.features[0]}</li>
-                <li>${singleElement.features[1]}</li>
-                <li>${singleElement.features[2]}</li>
-                <li>${singleElement.features[3] ? singleElement.features[3] : `<pre>`}</li>
+                
                 </ol>
               </p>
               <hr>
@@ -36,8 +50,8 @@ const singleData = (singleData) => {
                  </div>
                 <div>
                 <button class="btn bg-danger-subtle
-                "><img src="images/arrow-right.svg" alt=""></button>
-               
+                " data-bs-toggle="modal" data-bs-target="#aiModal"><img src="images/arrow-right.svg" alt=""></button>
+                
                 </div>
                
               </div>
@@ -45,34 +59,35 @@ const singleData = (singleData) => {
           </div>
           
         `
-        cardContainer.appendChild(div)
-        spinnerSection(false)
-        
-    })
+    cardContainer.appendChild(div)
+    toggleSpinner(false)
+
+  })
 }
 
-const spinnerSection = isLoading => {
+const toggleSpinner = isLoading => {
   const spinner = document.getElementById('spinner');
 
-  if(isLoading){
+  if (isLoading) {
     spinner.classList.remove("d-none")
-  }
-  else{
+  } else {
     spinner.classList.add("d-none")
   }
 }
 
-const featureList =  (featureList) =>{
-    // console.log(featureList[1])
-    // const featuresContainer = document.getElementById('test');
-    // featureList.forEach(singleFeatureList =>{
-    //     console.log(singleFeatureList)
-    //     const ol = document.createElement('ol')
-    //     ol.innerHTML=  `
-    //     <li>s</li>
-    //     `
-    //     document.featuresContainer.innerHTML = ol;
-    // })
+
+const featureList = (featureList) => {
+
+  // const featuresContainer = document.getElementById('test');
+  featureList.forEach(singleFeatureList => {
+    console.log(singleFeatureList)
+    const ol = document.createElement('ol')
+    ol.innerHTML = `
+      <li>${singleFeatureList}</li>
+      `
+    // document.featuresContainer.innerHTML = ol;
+    console.log(ol)
+  })
 }
 
 loadData()

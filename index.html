@@ -38,13 +38,102 @@
 
       </div>
 
-      <!-- see more btn -->
-      <div class="text-center">
-        <button class="btn btn-danger mt-4 py-2 fw-semibold">See More</button>
+      <!-- see more section -->
+      <div id="see-more" class="text-center d-none my-4">
+        <button id="see-more-btn" class="btn btn-danger mt-4 py-2 fw-semibold">See More</button>
       </div>
 
 
     </section>
+
+    <!-- modal section -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="aiModal" tabindex="-1" aria-labelledby="aiModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+              <!-- body first part -->
+              <div class="col">
+                <div class="card h-100">
+
+                  <div class="card-body">
+                    <div class="">
+                      <h3>
+                        ChatGPT is an AI-powered chatbot platform that uses OpenAI's GPT technology to simulate human
+                        conversation.
+                      </h3>
+                    </div>
+                    <!-- package items -->
+                    <div class="d-flex justify-content-evenly">
+                      <div>
+                        $10/month Basic
+                      </div>
+                      <div>
+                        $10/month Basic
+                      </div>
+                      <div>
+                        $10/month Basic
+                      </div>
+                    </div>
+                    <!-- features -->
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h5 class="cardTitle">Features</h5>
+                        <ul>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h5 class="cardTitle">Integrations</h5>
+                        <ul>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <p class="card-text cardText">
+                      <ol id="features-list">
+
+                      </ol>
+                    </p>
+                  </div>
+
+
+                </div>
+              </div>
+              <!--body second part  -->
+              <div class="col">
+                <div class="card h-100">
+                  <img
+                    src="https://randomwordgenerator.com/img/picture-generator/52e8d14b4956ac14f1dc8460962e33791c3ad6e04e50744172297cdc9049c4_640.jpg"
+                    class="img-fluid h-100 p-3 rounded-5" alt="...">
+                    <div><h5 class="bg-danger rounded-2 w-50 px-2 text-white">94% accuracy</h5></div>
+                  <div class="card-body">
+                    <h5 class="card-title cardTitle">Hi, how are you doing today?</h5>
+                    <p class="card-text cardText">
+                      I'm doing well, thank you for asking. How can I assist you today?
+
+                    </p>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
   </main>
 
 
