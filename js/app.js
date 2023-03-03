@@ -1,4 +1,5 @@
 const loadData = () => {
+  spinnerSection(true)
     const url = "https://openapi.programming-hero.com/api/ai/tools"
     fetch(url)
         .then(res => res.json())
@@ -45,11 +46,21 @@ const singleData = (singleData) => {
           
         `
         cardContainer.appendChild(div)
+        spinnerSection(false)
         
     })
 }
 
+const spinnerSection = isLoading => {
+  const spinner = document.getElementById('spinner');
 
+  if(isLoading){
+    spinner.classList.remove("d-none")
+  }
+  else{
+    spinner.classList.add("d-none")
+  }
+}
 
 const featureList =  (featureList) =>{
     // console.log(featureList[1])
