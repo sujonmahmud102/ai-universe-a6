@@ -82,20 +82,48 @@ document.getElementById('see-more-btn').addEventListener('click', function () {
 
 const singleDataDetails = id => {
   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`
-  
+
   fetch(url)
     .then(res => res.json())
     .then(singleData => displaySingleData(singleData))
-    
+
 }
 
 const displaySingleData = singleData => {
-  console.log(singleData.data.pricing[0].price)
+  // console.log(singleData.data.features)
+  // header part
   const toolDiscription = document.getElementById('tool-description');
   toolDiscription.innerText = singleData.data.description
 
+  // pricing part
   const price1 = document.getElementById('price1');
   price1.innerText = singleData.data.pricing[0].price + ' ' + singleData.data.pricing[0].plan;
+
+  const price2 = document.getElementById('price2');
+  price2.innerText = singleData.data.pricing[1].price + ' ' + singleData.data.pricing[1].plan;
+
+  const price3 = document.getElementById('price3');
+  price3.innerText = singleData.data.pricing[2].price + ' ' + singleData.data.pricing[2].plan;
+
+  // features part
+  const listElement = document.getElementById('features-list');
+  const featuresObj = singleData.data.features;
+  for (const key in featuresObj) {
+
+    // console.log(featuresObj[key].feature_name);
+    const li = document.createElement('li')
+    li.innerText = featuresObj[key].feature_name;
+    listElement.appendChild(li)
+    console.log(li)
+}
+
+  // let list = "<ol>";
+
+  // for (let i = 0; i < singleElement.features.length; i++) {
+  //   list += "<li>" + singleElement.features[i] + "</li>";
+  // }
+  // list += "</ol>"
+  // console.log(list)
 
 }
 
