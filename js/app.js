@@ -1,24 +1,21 @@
-const loadData = () => {
+const loadData = (limit) => {
   toggleSpinner(true)
   const url = "https://openapi.programming-hero.com/api/ai/tools"
   fetch(url)
     .then(res => res.json())
-    .then(data => displayData(data.data.tools))
+    .then(data => displayData(data.data.tools, limit))
 }
 
-const displayData = (data) => {
+const displayData = (data, limit) => {
   const cardContainer = document.getElementById('card-container')
+  cardContainer.innerHTML = '';
 
   // display 6 data
   const seeMore = document.getElementById('see-more');
 
-  if (data.length > 6) {
+  if (data.length > 6 && limit) {
     data = data.slice(0, 6);
     seeMore.classList.remove("d-none")
-    document.getElementById('see-more-btn').addEventListener('click', function () {
-
-      seeMore.classList.add("d-none")
-    })
 
   } else {
     seeMore.classList.add("d-none")
@@ -26,7 +23,6 @@ const displayData = (data) => {
 
   // display all data
   data.forEach(singleElement => {
-    featureList(singleElement.features)
 
     let list = "<ol>";
     for (let i = 0; i < singleElement.features.length; i++) {
@@ -73,7 +69,6 @@ const displayData = (data) => {
 
 const toggleSpinner = isLoading => {
   const spinner = document.getElementById('spinner');
-
   if (isLoading) {
     spinner.classList.remove("d-none")
   } else {
@@ -81,16 +76,10 @@ const toggleSpinner = isLoading => {
   }
 }
 
+document.getElementById('see-more-btn').addEventListener('click', function () {
 
-const featureList = (featureList) => {
-
-  const featuresContainer = document.getElementById('features-list');
-
- 
-  // console.log(list)
-  // featuresContainer.innerHTML = list;
-  // console.log(ol)
-}
+  loadData();
+})
 
 
-loadData()
+loadData(6);
