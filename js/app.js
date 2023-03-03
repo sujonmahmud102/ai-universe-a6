@@ -16,7 +16,6 @@ const displayData = (data, limit) => {
   if (data.length > 6 && limit) {
     data = data.slice(0, 6);
     seeMore.classList.remove("d-none")
-
   } else {
     seeMore.classList.add("d-none")
   }
@@ -51,9 +50,9 @@ const displayData = (data, limit) => {
                
                  </div>
                 <div>
-                <button class="btn bg-danger-subtle
-                " data-bs-toggle="modal" data-bs-target="#aiModal"><img src="images/arrow-right.svg" alt=""></button>
-                
+                  <button onclick="singleDataDetails('${singleElement.id}')" class="btn bg-danger-subtle
+                  " data-bs-toggle="modal" data-bs-target="#aiModal"><img src="images/arrow-right.svg" alt="">
+                  </button>
                 </div>
                
               </div>
@@ -81,5 +80,23 @@ document.getElementById('see-more-btn').addEventListener('click', function () {
   loadData();
 })
 
+const singleDataDetails = id => {
+  const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`
+  
+  fetch(url)
+    .then(res => res.json())
+    .then(singleData => displaySingleData(singleData))
+    
+}
+
+const displaySingleData = singleData => {
+  console.log(singleData.data.pricing[0].price)
+  const toolDiscription = document.getElementById('tool-description');
+  toolDiscription.innerText = singleData.data.description
+
+  const price1 = document.getElementById('price1');
+  price1.innerText = singleData.data.pricing[0].price + ' ' + singleData.data.pricing[0].plan;
+
+}
 
 loadData(6);
