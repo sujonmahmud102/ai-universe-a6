@@ -88,8 +88,9 @@ const singleDataDetails = id => {
 
 }
 
+// modal section
 const displaySingleData = singleData => {
-  // console.log(singleData.data.integrations)
+  console.log(singleData.data.input_output_examples[0])
   // header part
   const toolDiscription = document.getElementById('tool-description');
   toolDiscription.innerText = singleData.data.description
@@ -111,7 +112,6 @@ const displaySingleData = singleData => {
   for (const key in featuresObj) {
     const li = document.createElement('li')
     li.innerText = featuresObj[key].feature_name;
-    console.log(li)
     featuresList.appendChild(li)
   }
 
@@ -125,7 +125,22 @@ const displaySingleData = singleData => {
   }
   list += "</ul>"
   integrationList.innerHTML = `${list ? list : 'No Data Found'}`;
-  console.log(list)
+
+  // img part
+  const imgContainer = document.getElementById('modal-card2-img');
+  const img = document.createElement('img')
+  imgContainer.innerHTML = `
+      <img
+      src="${singleData.data.image_link[0]}"
+      class="img-fluid h-100 w-100 p-3 rounded-5" alt="...">
+  `
+
+  // input output part
+  const inputElement = document.getElementById('input-examples')
+  const outputElement = document.getElementById('output-examples')
+
+  inputElement.innerText = `${singleData.data.input_output_examples[0].input ? singleData.data.input_output_examples[0].input : ''}`
+  outputElement.innerText = `${singleData.data.input_output_examples[0].output ? singleData.data.input_output_examples[0].output : 'No! Not Yet! Take a break!!!'}`
 
 }
 
