@@ -131,7 +131,7 @@
 @media only screen and (max-width: 767px) {
     .tool-accuray {
         position: absolute;
-        left: 255px;
+        left: 235px;
         top: 20px;
         background: #EB5757;
         border-radius: 4px;
@@ -177,7 +177,9 @@
         border-radius: 10px;
     }
 
-    .pricing1, .pricing2, .pricing3 {
+    .pricing1,
+    .pricing2,
+    .pricing3 {
         font-weight: 600;
         font-size: 10px;
         line-height: 16px;
@@ -186,7 +188,7 @@
         padding-top: 16px;
     }
 
-    .cardContainer{
+    .cardContainer {
         display: flex;
     }
 }
