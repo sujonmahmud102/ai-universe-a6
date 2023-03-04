@@ -20,8 +20,21 @@ const displayData = (data, limit) => {
     seeMore.classList.add("d-none")
   }
 
+
   // display all data
   data.forEach(singleElement => {
+    // singleElement.sort(customSort);
+    const arr = singleElement;
+    document.getElementById('sort-date').addEventListener('click', function () {
+      // customSort(singleElement.sort);
+      arr.sort(function (a, b) {
+        return new Date(a.published_in) - new Date(b.published_in)
+      })
+      console.log(arr)
+    })
+
+
+
 
     let list = "<ol>";
     for (let i = 0; i < singleElement.features.length; i++) {
@@ -90,20 +103,37 @@ const singleDataDetails = id => {
 
 // modal section
 const displaySingleData = singleData => {
-  console.log(singleData.data.accuracy.score)
   // header part
   const toolDiscription = document.getElementById('tool-description');
-  toolDiscription.innerText = singleData.data.description
+  toolDiscription.innerText = singleData.data.description ? singleData.data.description : 'Not Found';
 
   // pricing part
   const price1 = document.getElementById('price1');
-  price1.innerText = singleData.data.pricing[0].price + ' ' + singleData.data.pricing[0].plan;
+  price1.innerHTML = `
+ <span>  ${singleData.data.pricing ? singleData.data.pricing[0].price : 'Free of Cost'}
+ </span> 
+  <br>
+ <span>  ${singleData.data.pricing ? singleData.data.pricing[0].plan : ''}
+ </span>
+  `
 
   const price2 = document.getElementById('price2');
-  price2.innerText = singleData.data.pricing[1].price + ' ' + singleData.data.pricing[1].plan;
+  price2.innerHTML = `
+ <span>  ${singleData.data.pricing ? singleData.data.pricing[1].price : 'Free of Cost'}
+ </span> 
+  <br>
+ <span>  ${singleData.data.pricing ? singleData.data.pricing[1].plan : ''}
+ </span>
+  `
 
   const price3 = document.getElementById('price3');
-  price3.innerText = singleData.data.pricing[2].price + ' ' + singleData.data.pricing[2].plan;
+  price3.innerHTML = `
+  <span>  ${singleData.data.pricing ? singleData.data.pricing[2].price : 'Free of Cost'}
+  </span> 
+   <br>
+  <span>  ${singleData.data.pricing ? singleData.data.pricing[2].plan : ''}
+  </span>
+   `
 
   // features part
   const featuresList = document.getElementById('features-list');
@@ -111,21 +141,21 @@ const displaySingleData = singleData => {
   const featuresObj = singleData.data.features;
   for (const key in featuresObj) {
     const li = document.createElement('li')
-    li.innerText = featuresObj[key].feature_name;
+    li.innerText = singleData.data.features ? featuresObj[key].feature_name : 'Not Found';
     featuresList.appendChild(li)
   }
 
   // integrations part
   const integrationList = document.getElementById('integrations-list');
-  integrationList.innerHTML = '';
+  
   let list = "<ul>";
-
-  for (let i = 0; i < singleData.data.integrations.length; i++) {
+  for (let i = 0; i < singleData.data.integrations ? singleData.data.integrations.length : ''; i++) {
     list += "<li>" + singleData.data.integrations[i] + "</li>";
   }
   list += "</ul>"
-  integrationList.innerHTML = `${list ? list : 'No Data Found'}`;
+  integrationList.innerHTML = `${singleData.data.integrations ? list : 'No Data Found'}`;
 
+  
   // img part
   const imgContainer = document.getElementById('modal-card2-img');
   const img = document.createElement('img')
@@ -138,21 +168,24 @@ const displaySingleData = singleData => {
   // accuracy
   const accuracyContainer = document.getElementById('accuracy-container');
   const accuray = document.getElementById('accuracy');
-  const accurayScore = singleData.data.accuracy.score;
+  const accurayScore = `${singleData.data.accuracy.score ? singleData.data.accuracy.score : '0'}`;
   const accuracyPercentage = accurayScore * 100;
   if (accuracyPercentage === 0) {
     accuracyContainer.classList.add('d-none')
   } else {
     accuray.innerText = accuracyPercentage;
+    accuracyContainer.classList.remove('d-none')
   }
 
   // input output part
   const inputElement = document.getElementById('input-examples')
   const outputElement = document.getElementById('output-examples')
 
-  inputElement.innerText = `${singleData.data.input_output_examples[0].input ? singleData.data.input_output_examples[0].input : ''}`
-  outputElement.innerText = `${singleData.data.input_output_examples[0].output ? singleData.data.input_output_examples[0].output : 'No! Not Yet! Take a break!!!'}`
+  inputElement.innerText = `${singleData.data.input_output_examples ? singleData.data.input_output_examples[0].input : ''}`
+  outputElement.innerText = `${singleData.data.input_output_examples ? singleData.data.input_output_examples[0].output : 'No! Not Yet! Take a break!!!'}`
 
 }
+
+
 
 loadData(6);

@@ -103,7 +103,7 @@
     align-items: center;
     text-align: center;
     color: #EB5757;
-    padding-top: 1px;
+    padding-top: 16px;
 }
 
 /* accuracy */
@@ -124,4 +124,48 @@
     align-items: center;
     text-align: center;
     color: #FFFFFF;
+}
+
+/* media query */
+/* media query for small device */
+@media only screen and (max-width: 767px) {
+    .tool-accuray {
+        position: absolute;
+        left: 205px;
+        top: 20px;
+        background: #EB5757;
+        border-radius: 4px;
+        height: 25px;
+    }
+
+    .tool-accuray-text {
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 19px;
+        align-items: center;
+        text-align: center;
+        color: #FFFFFF;
+    }
+}
+
+/* media query for medium device */
+
+@media only screen and (min-width: 768px) and (max-width: 992px)   {
+    .tool-accuray {
+        position: absolute;
+        left: 102px;
+        top: 20px;
+        background: #EB5757;
+        border-radius: 4px;
+        height: 25px;
+    }
+
+    .tool-accuray-text {
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 19px;
+        align-items: center;
+        text-align: center;
+        color: #FFFFFF;
+    }
 }
