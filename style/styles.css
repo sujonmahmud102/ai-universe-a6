@@ -131,7 +131,7 @@
 @media only screen and (max-width: 767px) {
     .tool-accuray {
         position: absolute;
-        left: 205px;
+        left: 255px;
         top: 20px;
         background: #EB5757;
         border-radius: 4px;
@@ -150,14 +150,14 @@
 
 /* media query for medium device */
 
-@media only screen and (min-width: 768px) and (max-width: 992px)   {
+@media only screen and (min-width: 768px) and (max-width: 992px) {
     .tool-accuray {
         position: absolute;
-        left: 102px;
+        left: 125px;
         top: 20px;
         background: #EB5757;
         border-radius: 4px;
-        height: 25px;
+        height: 20px;
     }
 
     .tool-accuray-text {
@@ -167,5 +167,26 @@
         align-items: center;
         text-align: center;
         color: #FFFFFF;
+    }
+
+    .pricing-div {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+        width: 60px;
+        border-radius: 10px;
+    }
+
+    .pricing1, .pricing2, .pricing3 {
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 16px;
+        align-items: center;
+        text-align: center;
+        padding-top: 16px;
+    }
+
+    .cardContainer{
+        display: flex;
     }
 }

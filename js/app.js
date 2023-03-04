@@ -23,18 +23,6 @@ const displayData = (data, limit) => {
 
   // display all data
   data.forEach(singleElement => {
-    // singleElement.sort(customSort);
-    const arr = singleElement;
-    document.getElementById('sort-date').addEventListener('click', function () {
-      // customSort(singleElement.sort);
-      arr.sort(function (a, b) {
-        return new Date(a.published_in) - new Date(b.published_in)
-      })
-      console.log(arr)
-    })
-
-
-
 
     let list = "<ol>";
     for (let i = 0; i < singleElement.features.length; i++) {
@@ -76,6 +64,13 @@ const displayData = (data, limit) => {
     cardContainer.appendChild(div)
     toggleSpinner(false)
 
+  })
+  document.getElementById('sort-date').addEventListener('click', function () {
+    data.sort(function (a, b) {
+      return new Date(a.published_in) - new Date(b.published_in)
+    })
+    displayData(data)
+    seeMore.classList.remove("d-none");
   })
 }
 
@@ -147,15 +142,15 @@ const displaySingleData = singleData => {
 
   // integrations part
   const integrationList = document.getElementById('integrations-list');
-  
+
   let list = "<ul>";
-  for (let i = 0; i < singleData.data.integrations ? singleData.data.integrations.length : ''; i++) {
+  for (let i = 0; i < (singleData.data.integrations ? singleData.data.integrations.length : ''); i++) {
     list += "<li>" + singleData.data.integrations[i] + "</li>";
   }
   list += "</ul>"
   integrationList.innerHTML = `${singleData.data.integrations ? list : 'No Data Found'}`;
 
-  
+
   // img part
   const imgContainer = document.getElementById('modal-card2-img');
   const img = document.createElement('img')
